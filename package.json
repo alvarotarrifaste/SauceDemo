@@ -1,15 +1,18 @@
 {
-  "name": "bigbang-ts",
+  "name": "saucedemo-playwright",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {},
-  "keywords": [],
-  "author": "",
+  "description": "Focused Playwright and TypeScript UI automation portfolio for SauceDemo",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "typecheck": "tsc --noEmit"
+  },
   "license": "ISC",
   "devDependencies": {
-    "@faker-js/faker": "^10.6.0",
     "@playwright/test": "^1.63.0",
-    "@types/node": "^26.5.0"
-  }
+    "@types/node": "^26.5.0",
+    "typescript": "7.0.2"
+  },
+  "private": true
 }
