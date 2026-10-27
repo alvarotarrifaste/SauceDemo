@@ -2,7 +2,6 @@ name: Playwright Tests
 
 on:
   push:
-    branches: [main, portfolio/saucedemo-refresh]
   pull_request:
     branches: [main]
 
@@ -29,11 +28,10 @@ jobs:
         run: npm run typecheck
       - name: Check patch whitespace
         run: git diff --check origin/main...HEAD
-      - name: Validate changed specs independently
+      - name: Validate optional npm commands
         run: |
-          npm test -- tests/authentication.spec.ts
-          npm test -- tests/cart.spec.ts
-          npm test -- tests/checkout.spec.ts
+          npm run test:headed -- --list
+          npm run test:ui -- --help
       - name: Run complete suite
         run: npm test
       - uses: actions/upload-artifact@v4

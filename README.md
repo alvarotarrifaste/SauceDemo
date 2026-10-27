@@ -66,7 +66,7 @@ Headed and UI modes require a graphical desktop. HTML reports are written to `pl
 
 ## CI
 
-[GitHub Actions](https://github.com/alvarotarrifaste/SauceDemo/actions/workflows/playwright.yml) runs on pushes and pull requests targeting `main`. It uses Node.js 24, runs `npm ci`, installs Chromium with system dependencies, checks TypeScript, and executes the suite with one worker. Reports and failure diagnostics are uploaded as artifacts.
+[GitHub Actions](https://github.com/alvarotarrifaste/SauceDemo/actions/workflows/playwright.yml) runs on every branch push and on pull requests targeting `main`. It uses Node.js 24, runs `npm ci`, installs Chromium with system dependencies, checks TypeScript, and executes the suite with one worker. Reports and failure diagnostics are uploaded as artifacts.
 
 Retries are disabled so a failing first attempt stays visible. Traces are retained on failure without needing a retry.
 
