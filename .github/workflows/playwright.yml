@@ -33,6 +33,7 @@ jobs:
         run: |
           npm test -- tests/authentication.spec.ts
           npm test -- tests/cart.spec.ts
+          npm test -- tests/checkout.spec.ts
       - name: Run complete suite
         run: npm test
       - uses: actions/upload-artifact@v4
