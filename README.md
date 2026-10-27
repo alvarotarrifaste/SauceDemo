@@ -12,7 +12,7 @@ Eight independent Chromium tests cover:
 - Adding a backpack updates the badge and puts the expected product and quantity in the cart.
 - Removing the backpack empties the cart, survives a reload, and restores its add control in inventory.
 - A complete purchase from login through checkout verifies the product, quantity, subtotal, tax, total, order confirmation, and cleared cart. It downloads the PDF order, checks the filename and PDF header/footer, and attaches it to the test report.
-- Checkout without a postal code is blocked with the expected error and preserves the cart.
+- Checkout validates all three required fields in sequence (first name, last name, postal code), shows each expected error, blocks progress, and preserves the cart.
 - Cancelling from checkout overview returns to inventory and preserves the selected product.
 
 The suite is representative rather than exhaustive. Payment-provider declines, API testing, other browsers, and full product coverage are outside its scope. The failed-purchase case covers required-field validation; it does not simulate a real payment decline. PDF generation is checked at download/file level; document text and visual layout are not automatically verified.

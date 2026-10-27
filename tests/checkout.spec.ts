@@ -59,13 +59,21 @@ test('valid purchase completes and generates a PDF order document', async ({ pag
   await expect(cart.items).toHaveCount(0);
 });
 
-test('purchase is blocked when the postal code is missing', async ({ page }) => {
+test('purchase is blocked until first name last name and postal code are provided', async ({ page }) => {
   const checkout = new CheckoutPage(page);
   const inventory = new InventoryPage(page);
   const cart = new CartPage(page);
-  await checkout.fillInformation(customer.firstName, customer.lastName, '');
   await checkout.continue();
+  await expect(checkout.errorMessage).toHaveText('Error: First Name is required');
+  await expect(page).toHaveURL(/\/checkout-step-one\.html$/);
 
+  await checkout.firstNameInput.fill(customer.firstName);
+  await checkout.continue();
+  await expect(checkout.errorMessage).toHaveText('Error: Last Name is required');
+  await expect(page).toHaveURL(/\/checkout-step-one\.html$/);
+
+  await checkout.lastNameInput.fill(customer.lastName);
+  await checkout.continue();
   await expect(checkout.errorMessage).toHaveText('Error: Postal Code is required');
   await expect(page).toHaveURL(/\/checkout-step-one\.html$/);
   await expect(checkout.firstNameInput).toHaveValue(customer.firstName);
