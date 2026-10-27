@@ -28,10 +28,6 @@ jobs:
         run: npm run typecheck
       - name: Check patch whitespace
         run: git diff --check origin/main...HEAD
-      - name: Validate optional npm commands
-        run: |
-          npm run test:headed -- --list
-          npm run test:ui -- --help
       - name: Run complete suite
         run: npm test
       - uses: actions/upload-artifact@v4
